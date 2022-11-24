@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Data to make available to the XML via data binding. In this case,
+     the whole ViewModel, so that we can access the LiveData,
+     click handlers, and state variables. -->
+    <data>
+        <variable
+            name="mainViewModel"
+            type="com.example.networktest.ui.main.MainViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.main.MainFragment">
+
+        <Spinner
+            android:id="@+id/area_spinner"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="32dp"
+            android:contentDescription="@string/area_spinner"
+            android:entries="@{mainViewModel.areaList}"
+            android:minHeight="48dp"
+            android:onItemSelected="@{(parent, view, position, id) -> mainViewModel.onAreaSelected(position)}"
+            android:popupBackground="@drawable/background_spinner"
+            android:spinnerMode="dropdown"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Spinner
+            android:id="@+id/prefecture_spinner"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
+            android:contentDescription="@string/prefecture_spinner"
+            android:entries="@{mainViewModel.prefectureList}"
+            android:minHeight="48dp"
+            android:onItemSelected="@{(parent, view, position, id) -> mainViewModel.onPrefectureSelected(position)}"
+            android:popupBackground="@drawable/background_spinner"
+            android:spinnerMode="dropdown"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/area_spinner" />
+
+        <Spinner
+            android:id="@+id/line_spinner"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
+            android:contentDescription="@string/line_spinner"
+            android:entries="@{mainViewModel.lineList}"
+            android:minHeight="48dp"
+            android:onItemSelected="@{(parent, view, position, id) -> mainViewModel.onLineSelected(position)}"
+            android:popupBackground="@drawable/background_spinner"
+            android:spinnerMode="dropdown"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/prefecture_spinner" />
+
+        <Spinner
+            android:id="@+id/station_spinner"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
+            android:contentDescription="@string/station_spinner"
+            android:entries="@{mainViewModel.stationNameList}"
+            android:minHeight="48dp"
+            android:onItemSelected="@{(parent, view, position, id) -> mainViewModel.onStationSelected(position)}"
+            android:popupBackground="@drawable/background_spinner"
+            android:spinnerMode="dropdown"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/line_spinner" />
+
+        <TextView
+            android:id="@+id/message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/station_spinner"
+            tools:text="message area" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

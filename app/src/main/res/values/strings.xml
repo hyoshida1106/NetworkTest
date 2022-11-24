@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">NetworkTest</string>
+    <string name="area_list">area list</string>
+    <string name="prefecture_spinner">Prefecture Selector</string>
+    <string name="line_spinner">Line Selector</string>
+    <string name="area_spinner">Area Selector</string>
+    <string name="station_spinner">Station Selector</string>
+</resources>
